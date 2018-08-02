@@ -18,6 +18,18 @@ app.get('/',async(req,res)=>{
     console.log("hi");
     res.send("hi");
 })
+app.get('/login.html',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/addPage.html');
+})
+app.get('/register.html',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/register.html');
+})
+app.get('/index2.html',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/index2.html');
+})
 app.post('/registerUser',async(req,res)=>{
     //console.log(req.body);
     var data=await model1.registerUser(req.body.uname,req.body.email,req.body.password);
