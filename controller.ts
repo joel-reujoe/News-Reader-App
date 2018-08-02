@@ -54,6 +54,18 @@ app.get('/logo-1.png',async(req,res)=>{
     res.setHeader('content-type','text/html')    
     res.sendFile(__dirname+'/pages/logo-1.png');
 })
+app.get('/jquery.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/jquery.min.js');
+})
+app.get('/bootstrap.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/bootstrap.min.js');
+})
+app.get('/icheck.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/icheck.min.js');
+})
 app.get('/general.js',async(req,res)=>{
     res.setHeader('content-type','text/javascript')
     res.sendFile(__dirname+'/general.js');
