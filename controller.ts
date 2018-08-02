@@ -31,28 +31,28 @@ app.get('/index2.html',async(req,res)=>{
     res.sendFile(__dirname+'/pages/index2.html');
 })
 app.get('/css/bootstrap.min.css',async(req,res)=>{
-    res.setHeader('content-type','text/html')    
+    res.setHeader('content-type','text/css')    
     res.sendFile(__dirname+'/pages/css/bootstrap.min.css');
 })
 app.get('/css/font-awesome.min.css',async(req,res)=>{
-    res.setHeader('content-type','text/html')    
+    res.setHeader('content-type','text/css')    
     res.sendFile(__dirname+'/pages/css/font-awesome.min.css');
 })
 app.get('/css/ionicons.min.css',async(req,res)=>{
-    res.setHeader('content-type','text/html')    
+    res.setHeader('content-type','text/css')    
     res.sendFile(__dirname+'/pages/css/ionicons.min.css');
 })
 app.get('/css/AdminLTE.min.css',async(req,res)=>{
-    res.setHeader('content-type','text/html')    
+    res.setHeader('content-type','text/css')    
     res.sendFile(__dirname+'/pages/css/AdminLTE.min.css');
 })
 app.get('/css/blue.css',async(req,res)=>{
-    res.setHeader('content-type','text/html')    
+    res.setHeader('content-type','text/css')    
     res.sendFile(__dirname+'/pages/css/blue.css');
 })
-app.get('/css/bootstrap.min.css',async(req,res)=>{
+app.get('/logo-1.png',async(req,res)=>{
     res.setHeader('content-type','text/html')    
-    res.sendFile(__dirname+'/pages/css/bootstrap.min.css');
+    res.sendFile(__dirname+'/pages/logo-1.png');
 })
 app.get('/general.js',async(req,res)=>{
     res.setHeader('content-type','text/javascript')

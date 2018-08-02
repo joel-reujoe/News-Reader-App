@@ -38,28 +38,28 @@ app.get('/index2.html', (req, res) => __awaiter(this, void 0, void 0, function* 
     res.sendFile(__dirname + '/pages/index2.html');
 }));
 app.get('/css/bootstrap.min.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.setHeader('content-type', 'text/html');
+    res.setHeader('content-type', 'text/css');
     res.sendFile(__dirname + '/pages/css/bootstrap.min.css');
 }));
 app.get('/css/font-awesome.min.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.setHeader('content-type', 'text/html');
+    res.setHeader('content-type', 'text/css');
     res.sendFile(__dirname + '/pages/css/font-awesome.min.css');
 }));
 app.get('/css/ionicons.min.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.setHeader('content-type', 'text/html');
+    res.setHeader('content-type', 'text/css');
     res.sendFile(__dirname + '/pages/css/ionicons.min.css');
 }));
 app.get('/css/AdminLTE.min.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.setHeader('content-type', 'text/html');
+    res.setHeader('content-type', 'text/css');
     res.sendFile(__dirname + '/pages/css/AdminLTE.min.css');
 }));
 app.get('/css/blue.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.setHeader('content-type', 'text/html');
+    res.setHeader('content-type', 'text/css');
     res.sendFile(__dirname + '/pages/css/blue.css');
 }));
-app.get('/css/bootstrap.min.css', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/logo-1.png', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.setHeader('content-type', 'text/html');
-    res.sendFile(__dirname + '/pages/css/bootstrap.min.css');
+    res.sendFile(__dirname + '/pages/logo-1.png');
 }));
 app.get('/general.js', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.setHeader('content-type', 'text/javascript');
