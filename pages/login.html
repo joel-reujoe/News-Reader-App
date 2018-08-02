@@ -82,7 +82,7 @@
     var params=new URLSearchParams();
     params.append('email',document.getElementById("email").value);  
     params.append('password',document.getElementById("password").value);
-    axios.post(`${globalpath}signIn`,params).then(function(response){
+    axios.get(`${globalpath}signIn`,params).then(function(response){
       if(response.data.status==true)
       {
         localStorage.setItem("uid",response.data.data.uid);

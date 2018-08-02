@@ -41,15 +41,15 @@ app.get('/general.js', (req, res) => __awaiter(this, void 0, void 0, function* (
     res.setHeader('content-type', 'text/javascript');
     res.sendFile(__dirname + '/general.js');
 }));
-app.post('/registerUser', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/registerUser', (req, res) => __awaiter(this, void 0, void 0, function* () {
     var data = yield model1.registerUser(req.body.uname, req.body.email, req.body.password);
     res.send(data);
 }));
-app.post('/signIn', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/signIn', (req, res) => __awaiter(this, void 0, void 0, function* () {
     var data = yield model1.signInUser(req.body.email, req.body.password);
     res.send(data);
 }));
-app.post('/newsGenerator', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/newsGenerator', (req, res) => __awaiter(this, void 0, void 0, function* () {
     var data = yield model1.newsGenerator(req.body.category);
     res.send(data);
 }));
