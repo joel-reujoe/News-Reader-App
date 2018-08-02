@@ -1,2 +1,2 @@
-var globalpath = "http://localhost:8000/";
+var globalpath = "https://floating-savannah-76404.herokuapp.com/";
 //# sourceMappingURL=general.js.map

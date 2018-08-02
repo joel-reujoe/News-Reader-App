@@ -66,6 +66,30 @@ app.get('/icheck.min.js',async(req,res)=>{
     res.setHeader('content-type','text/html')    
     res.sendFile(__dirname+'/pages/js/icheck.min.js');
 })
+app.get('/fastclick.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/fastclick.js');
+})
+app.get('/adminlte.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/adminlte.min.js');
+})
+app.get('/jquery.sparkline.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/jquery.sparkline.min.js');
+})
+app.get('/jquery-jvectormap-1.2.2.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/jquery-jvectormap-1.2.2.min.js');
+})
+app.get('/jquery-jvectormap-world-mill-en.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/jquery-jvectormap-world-mill-en.js');
+})
+app.get('/jquery.slimscroll.min.js',async(req,res)=>{
+    res.setHeader('content-type','text/html')    
+    res.sendFile(__dirname+'/pages/js/jquery.slimscroll.min.js');
+})
 app.get('/general.js',async(req,res)=>{
     res.setHeader('content-type','text/javascript')
     res.sendFile(__dirname+'/general.js');
