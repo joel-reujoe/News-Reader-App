@@ -30,6 +30,10 @@ app.get('/index2.html',async(req,res)=>{
     res.setHeader('content-type','text/html')    
     res.sendFile(__dirname+'/pages/index2.html');
 })
+app.get('/general.js',async(req,res)=>{
+    res.setHeader('content-type','text/javascript')
+    res.sendFile(__dirname+'/general.js');
+})
 app.post('/registerUser',async(req,res)=>{
     //console.log(req.body);
     var data=await model1.registerUser(req.body.uname,req.body.email,req.body.password);
