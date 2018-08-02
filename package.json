@@ -1,0 +1,30 @@
+{
+  "name": "ait-mini",
+  "version": "1.0.0",
+  "description": "\"NEWS READER APP\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase": "^4.11.0",
+    "firebase-admin": "^5.11.0",
+    "mysql": "^2.15.0",
+    "newsapi": "^2.2.0"
+  },
+  "engines":{
+    "node":"8.9.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joel-reujoe/News-Reader-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joel-reujoe/News-Reader-App/issues"
+  },
+  "homepage": "https://github.com/joel-reujoe/News-Reader-App#readme"
+}
