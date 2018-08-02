@@ -20,7 +20,7 @@ app.get('/',async(req,res)=>{
 })
 app.get('/login.html',async(req,res)=>{
     res.setHeader('content-type','text/html')    
-    res.sendFile(__dirname+'/pages/addPage.html');
+    res.sendFile(__dirname+'/pages/login.html');
 })
 app.get('/register.html',async(req,res)=>{
     res.setHeader('content-type','text/html')    
