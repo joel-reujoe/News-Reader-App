@@ -59,6 +59,7 @@ class Model{
         
     }
     signInUser=async(email,password)=>{
+        console.log(email);
         return new Promise(async(resolve,reject)=>{
             firebase.auth().signInWithEmailAndPassword(email,password).then(function(response){
                 firebase.database().ref('/user/').orderByChild("email").equalTo(email).once('value').then(function(snapshot){

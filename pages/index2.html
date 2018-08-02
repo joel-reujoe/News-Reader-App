@@ -127,7 +127,7 @@
     document.getElementById("articles").innerHTML="";
     var params=new URLSearchParams();
     params.append("category",cat);
-    axios.get(`${globalpath}newsGenerator`,params).then(function(response){
+    axios.post(`${globalpath}newsGenerator`,params).then(function(response){
       for(var i=0;i<response.data.articles.length;i++)
       {
         var div=document.createElement('div');
@@ -161,7 +161,7 @@
   }
   var params=new URLSearchParams();
   params.append("category","general")
- axios.get(`${globalpath}newsGenerator`,params).then(function(response){
+ axios.post(`${globalpath}newsGenerator`,params).then(function(response){
    document.getElementById("username").innerHTML="Welcome "+localStorage.getItem("uname");
     for(var i=0;i<response.data.articles.length;i++)
     {

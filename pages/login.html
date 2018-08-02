@@ -72,6 +72,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
 <script src="https://floating-savannah-76404.herokuapp.com/general.js"></script>
+<script src="../general.js"></script>
+
 <script>
 </script>
 <script>
@@ -82,7 +84,7 @@
     var params=new URLSearchParams();
     params.append('email',document.getElementById("email").value);  
     params.append('password',document.getElementById("password").value);
-    axios.get(`${globalpath}signIn`,params).then(function(response){
+    axios.post(`${globalpath}signIn`,params).then(function(response){
       if(response.data.status==true)
       {
         localStorage.setItem("uid",response.data.data.uid);

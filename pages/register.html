@@ -78,6 +78,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
 <script src="https://floating-savannah-76404.herokuapp.com/general.js"></script>
+<script src="../general.js"></script>
 <script>
  document.getElementById("register").addEventListener("click",register);
 //  document.getElementById("register").addEventListener("click",function(event){
@@ -91,7 +92,7 @@ function register(event)
   params.append('email',document.getElementById("email").value);  
   params.append('password',document.getElementById("password").value);
   
-  axios.get(`${globalpath}registerUser`,params).then(function(response){
+  axios.post(`${globalpath}registerUser`,params).then(function(response){
     console.log(response);
     if(response.data.status==true)
         {

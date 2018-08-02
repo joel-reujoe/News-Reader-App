@@ -62,6 +62,7 @@ class Model {
             }));
         });
         this.signInUser = (email, password) => __awaiter(this, void 0, void 0, function* () {
+            console.log(email);
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 firebase.auth().signInWithEmailAndPassword(email, password).then(function (response) {
                     firebase.database().ref('/user/').orderByChild("email").equalTo(email).once('value').then(function (snapshot) {
