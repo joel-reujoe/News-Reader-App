@@ -94,17 +94,17 @@ app.get('/general.js',async(req,res)=>{
     res.setHeader('content-type','text/javascript')
     res.sendFile(__dirname+'/general.js');
 })
-app.post('/registerUser',async(req,res)=>{
+app.get('/registerUser',async(req,res)=>{
     //console.log(req.body);
     var data=await model1.registerUser(req.body.uname,req.body.email,req.body.password);
     res.send(data)
 })
-app.post('/signIn',async(req,res)=>{
+app.get('/signIn',async(req,res)=>{
     var data=await model1.signInUser(req.body.email,req.body.password)
     //console.log(data);
     res.send(data)
 })
-app.post('/newsGenerator',async(req,res)=>{
+app.get('/newsGenerator',async(req,res)=>{
     var data=await model1.newsGenerator(req.body.category);
     res.send(data)
 })
