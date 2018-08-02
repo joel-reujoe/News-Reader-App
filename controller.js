@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     console.log("hi");
-    res.render('index');
+    res.send("hi");
 }));
 app.post('/registerUser', (req, res) => __awaiter(this, void 0, void 0, function* () {
     var data = yield model1.registerUser(req.body.uname, req.body.email, req.body.password);

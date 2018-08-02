@@ -36,6 +36,7 @@
   <div class="register-box-body">
     <p class="login-box-msg">Register as new member</p>
 
+    <div id="alert-msg"></div>
     <form  method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="User name" id="uname">
@@ -69,14 +70,14 @@
 <!-- /.register-box -->
 
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="./js/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script src="./js/icheck.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-<script src="http://localhost/AIT-mini/general.js"></script>
+<script src="http://localhost/News-Reader-App/general.js"></script>
 <script>
  document.getElementById("register").addEventListener("click",register);
 //  document.getElementById("register").addEventListener("click",function(event){
@@ -95,11 +96,11 @@ function register(event)
     if(response.data.status==true)
         {
           localStorage.setItem("hid",response.data.hid);
-          document.getElementById('alert_msg').innerHTML=`<div class="alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>${response.data.msg} else enter proper password</strong></div>'`          
+          document.getElementById('alert-msg').innerHTML=`<div class="alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>${response.data.msg} else enter proper password</strong></div>'`          
         }
         else{
           
-          document.getElementById('alert_msg').innerHTML=`<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>${response.data.msg} else enter proper password</strong></div>'`
+          document.getElementById('alert-msg').innerHTML=`<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>${response.data.msg} else enter proper password</strong></div>'`
         }
   }).catch(function(error){
     console.log(error);

@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.get('/',async(req,res)=>{
     console.log("hi");
-    res.render('index');
+    res.send("hi");
 })
 app.post('/registerUser',async(req,res)=>{
     //console.log(req.body);
@@ -32,6 +32,7 @@ app.post('/newsGenerator',async(req,res)=>{
     var data=await model1.newsGenerator(req.body.category);
     res.send(data)
 })
-app.listen(8000,()=>{
+var port=process.env.PORT||8000;
+app.listen(port,()=>{
     console.log('Server Started');
 })
