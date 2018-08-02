@@ -25,6 +25,22 @@ app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     console.log("hi");
     res.send("hi");
 }));
+app.get('/login.html', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    res.setHeader('content-type', 'text/html');
+    res.sendFile(__dirname + '/pages/addPage.html');
+}));
+app.get('/register.html', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    res.setHeader('content-type', 'text/html');
+    res.sendFile(__dirname + '/pages/register.html');
+}));
+app.get('/index2.html', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    res.setHeader('content-type', 'text/html');
+    res.sendFile(__dirname + '/pages/index2.html');
+}));
+app.get('/general.js', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    res.setHeader('content-type', 'text/javascript');
+    res.sendFile(__dirname + '/general.js');
+}));
 app.post('/registerUser', (req, res) => __awaiter(this, void 0, void 0, function* () {
     var data = yield model1.registerUser(req.body.uname, req.body.email, req.body.password);
     res.send(data);
@@ -37,7 +53,8 @@ app.post('/newsGenerator', (req, res) => __awaiter(this, void 0, void 0, functio
     var data = yield model1.newsGenerator(req.body.category);
     res.send(data);
 }));
-app.listen(8000, () => {
-    console.log('Server Started');
+var port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log('Server Started at ' + port);
 });
 //# sourceMappingURL=controller.js.map
