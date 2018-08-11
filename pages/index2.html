@@ -28,6 +28,13 @@
   <![endif]-->
 
   <!-- Google Font -->
+  <style>
+  @media screen and (min-width:480px){
+    .phone{
+      width: 100%;
+    }
+  }
+  </style>
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -77,12 +84,12 @@
         <div class="nav-tabs-custom">
           
             <ul class="nav nav-tabs pull-left">
-                <li class="active"><a href="#revenue-chart" data-toggle="tab" id="general" onclick="catergory(this.id)">General</a></li>
-                <li><a href="#sales-chart" data-toggle="tab" id="business" onclick="catergory(this.id)">Business</a></li>
-                <li><a href="#sales-chart" data-toggle="tab" id="sports" onclick="catergory(this.id)">Sports</a></li>   
-                <li><a href="#sales-chart" data-toggle="tab" id="entertainment" onclick="catergory(this.id)">Entertainment</a></li>  
-                <li><a href="#sales-chart" data-toggle="tab" id="science" onclick="catergory(this.id)">Science</a></li> 
-                <li><a href="#sales-chart" data-toggle="tab" id="technology" onclick="catergory(this.id)">Technology</a></li>                                                          
+                <li class="active"><a href="#revenue-chart" data-toggle="tab" id="general" onclick="catergory(this.id)" class="phone">General</a></li>
+                <li><a href="#sales-chart" data-toggle="tab" id="business" onclick="catergory(this.id)" class="phone">Business</a></li>
+                <li><a href="#sales-chart" data-toggle="tab" id="sports" onclick="catergory(this.id)" class="phone">Sports</a></li>   
+                <li><a href="#sales-chart" data-toggle="tab" id="entertainment" onclick="catergory(this.id)" class="phone">Entertainment</a></li>  
+                <li><a href="#sales-chart" data-toggle="tab" id="science" onclick="catergory(this.id)"class="phone">Science</a></li> 
+                <li><a href="#sales-chart" data-toggle="tab" id="technology" onclick="catergory(this.id)" class="phone">Technology</a></li>                                                          
               </ul>
               <div class="tab-content no-padding">
                   <!-- Morris chart - Sales -->
