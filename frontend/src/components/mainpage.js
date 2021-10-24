@@ -9,7 +9,7 @@ const { Header, Content, Sider } = Layout;
 
 
 const MainPage = (props)=>{
-    const globalpath = "http://localhost:8000";
+    const globalpath = window.location.href.split(window.location.pathname)[0];
     console.log(globalpath)
     const [listDataItem, setListData] = useState([])
     const [category, setCategory] = useState("")

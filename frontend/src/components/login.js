@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 const { Header, Content } = Layout;
 
-const globalpath = "http://localhost:8000"
+const globalpath = window.location.href.split(window.location.pathname)[0];
 
 
 
