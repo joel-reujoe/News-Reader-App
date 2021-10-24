@@ -97,5 +97,5 @@ class Model {
     }
 }
 module.exports = Model;
-export {};
+// export {};
 //# sourceMappingURL=model.js.map
