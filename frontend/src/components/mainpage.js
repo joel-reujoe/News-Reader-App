@@ -9,7 +9,7 @@ const { Header, Content, Sider } = Layout;
 
 
 const MainPage = (props)=>{
-    const globalpath = window.location.href.split(window.location.pathname)[0];
+    const globalpath = "http://localhost:8000";
     console.log(globalpath)
     const [listDataItem, setListData] = useState([])
     const [category, setCategory] = useState("")
@@ -73,12 +73,12 @@ return <Layout>
     </Header>
     <Content style={{ padding: '0 50px' }}>
       <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
-        <Sider className="site-layout-background" width={200} style={{margin:100}}>
+        <Sider className="site-layout-background" width={200} style={{marginTop:100,marginLeft:-40}}>
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
-            style={{ height: '100%' , margin:"100"}}
+            style={{ height: '100%'}}
           >
               <Menu.Item key="1" onClick={()=>{handleCategoryClick('general')}} >General</Menu.Item>
               <Menu.Item key="2" onClick={()=>{handleCategoryClick('business')}}>Business</Menu.Item>
@@ -96,7 +96,7 @@ return <Layout>
             onChange: page => {
                 console.log(page);
             },
-            pageSize: 3,
+            pageSize: 4,
             }}
             dataSource={listDataItem}
         renderItem={item => (

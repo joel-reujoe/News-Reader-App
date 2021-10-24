@@ -53,33 +53,33 @@ return <Layout>
         <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
         <div className="site-layout-background" style={{ padding: 100, minHeight: 380 }}>
         <div className=""><strong>{msg}</strong></div>
-        <Content style={{ padding: '0 50px' }}>
+        <Content style={{ padding: '0 50px',marginTop: 64, marginLeft:-130  }}>
             <div className="site-layout-content">
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
+                wrapperCol={{ span: 2 }}
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 >
-                <Form.Item
+                <Form.Item style={{width:250}}
                     label="Email"
                     name="email"
                     rules={[{ required: true, message: 'Please input your email!' }]}
                 >
-                    <Input />
+                    <Input style={{width:250}} />
                 </Form.Item>
 
-                <Form.Item
+                <Form.Item style={{width:250}}
                     label="Password"
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
-                    <Input.Password />
+                    <Input.Password style={{width:250}}/>
                 </Form.Item>
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item wrapperCol={{ span: 4 }}>
                     <Button type="primary" style={{margin:20}} htmlType="submit">
                     Register
                     </Button>
