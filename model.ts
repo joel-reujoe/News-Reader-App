@@ -2,10 +2,6 @@ import { resolve } from "dns";
 
 var NEWSAPI=require('newsapi');
 var firebase=require('firebase');
-var express=require('express');
-var sql=require('mysql');
-var fs=require('fs');
-var bodyParser=require('body-parser');
 var config = {
     apiKey: "AIzaSyCkZ0zRdKzYP9PPL36mEoUsr7YPARyQ1vg",
     databaseURL: "https://nodetest-95f46.firebaseio.com",
@@ -29,13 +25,31 @@ class Model{
             }
         })
     }
-    registerUser=async(uname,email,password)=>{
+
+    searchNews = async(query)=>{
+        return new Promise(async(resolve,reject)=>{
+            try{
+            newsapi.v2.everything({
+                q: query,
+                language: 'en',
+                sortBy: 'relevancy',
+              }).then(response => {
+                resolve(response);
+              });
+            }
+            catch(err)
+            {
+                reject(err)
+            }
+        })
+       
+    }
+    registerUser=async(email,password)=>{
         return new Promise(async(resolve,reject)=>{
             try{
                 firebase.auth().createUserWithEmailAndPassword(email, password).then(function(response){
                     var database=firebase.database().ref('user');
                     var user=database.push({
-                        uname:uname,
                         email:email,
                         uid:response.uid
                     })

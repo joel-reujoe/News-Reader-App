@@ -4,7 +4,7 @@
   "description": "\"NEWS READER APP\"",
   "main": "index.js",
   "scripts": {
-    "start": "node controller.js",
+    "start": "nodemon controller.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
