@@ -45,7 +45,7 @@ app.get('/searchNews',async(req,res)=>{
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'));
 });
-let port=process.env.PORT||8000;
+let port=process.env.PORT || 8000;
 app.listen(port,()=>{
     console.log('Server Started at '+port);
 })
