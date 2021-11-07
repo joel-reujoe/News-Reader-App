@@ -34,7 +34,7 @@ let LoginPage = class LoginPage {
     ionViewWillEnter() {
         return __awaiter(this, void 0, void 0, function* () {
             this.uid = yield this.getLoginStatus();
-            if (this.uid !== "") {
+            if (this.uid !== null) {
                 this.navCtrl.navigateForward('folder/general');
             }
         });

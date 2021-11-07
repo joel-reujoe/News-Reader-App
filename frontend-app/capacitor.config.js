@@ -1,5 +1,5 @@
 const config = {
-    appId: 'io.ionic.starter',
+    appId: 'io.ionic.news-reader-app',
     appName: 'frontend-app',
     webDir: 'www',
     bundledWebRuntime: false

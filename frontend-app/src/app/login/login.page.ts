@@ -27,7 +27,7 @@ export class LoginPage {
 
     async ionViewWillEnter(){
       this.uid = await this.getLoginStatus()
-      if(this.uid !== "")
+      if(this.uid !== null)
       {
         this.navCtrl.navigateForward('folder/general')
       }
