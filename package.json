@@ -10,14 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ionic-native/core": "^5.36.0",
+    "@ionic-native/in-app-browser": "^5.36.0",
     "express": "^4.16.3",
-    "firebase": "^4.11.0",
+    "firebase": "^4.13.1",
     "firebase-admin": "^5.11.0",
     "mysql": "^2.15.0",
     "newsapi": "^2.2.0"
   },
-  "engines":{
-    "node":"8.9.0"
+  "engines": {
+    "node": "8.9.0"
   },
   "devDependencies": {},
   "repository": {

@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.resolve(__dirname, 'frontend/build')));
+app.use(express.static(path.resolve(__dirname, 'frontend-app/www')));
 app.post('/registerUser', (req, res) => __awaiter(this, void 0, void 0, function* () {
     let data = yield model1.registerUser(req.body.email, req.body.password);
     res.send(data);
@@ -44,7 +44,7 @@ app.get('/searchNews', (req, res) => __awaiter(this, void 0, void 0, function* (
     }
 }));
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend-app/www', 'index.html'));
 });
 let port = process.env.PORT || 8000;
 app.listen(port, () => {

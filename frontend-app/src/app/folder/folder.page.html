@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list style="position:absolute; top:-300px">
+      <ion-item *ngFor="let article of articles" >
+        
+       <ion-card>
+        <img src="{{ article.urlToImage }}"/>
+        <ion-card-title style="padding:20px" (click)="redirectTo(article.url)">
+           {{ article.title }}
+        </ion-card-title>
+        <ion-card-content>
+           {{ article.description }}
+        </ion-card-content>
+       </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

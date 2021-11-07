@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img alt="logo" height="40"  src="https://domaini.herokuapp.com/static/media/logo-1.da7fd3f9.png" > 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="register(formGroup.value)" method="post">
+    <ion-item>
+      <ion-label position="floating" required>Email</ion-label>
+      <ion-input ngModel formControlName="email"  type="email" name="email"></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched" >{{ contentAlert }}</div>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating" required>Password</ion-label>
+      <ion-input formControlName="password" ngModel type="password" name="password"></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched" >{{ contentAlert }}</div>
+    </ion-item>
+    <ion-button type="submit" expand="full" color="primary" [disabled]="!formGroup.valid">Register</ion-button>
+    <p text-center>Have an account?</p>
+    <ion-button expand="full" color="danger" (click)="loginModal()">Login</ion-button>
+  </form>
+</ion-content>
