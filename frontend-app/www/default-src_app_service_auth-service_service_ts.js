@@ -545,7 +545,7 @@ let AuthServiceService = class AuthServiceService {
         this.http = http;
         this.alertService = alertService;
         this.navCtrl = navCtrl;
-        this.API_URL = 'http://localhost:8000';
+        this.API_URL = 'https://domaini.herokuapp.com';
     }
     getLoginStatus() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {

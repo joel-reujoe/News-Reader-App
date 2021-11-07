@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class AuthServiceService {
 
-  API_URL = 'http://localhost:8000'
+  API_URL = 'https://domaini.herokuapp.com'
   uid:string
 
   constructor(
