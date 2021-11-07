@@ -5,6 +5,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { NavController } from '@ionic/angular';
 import { Article } from 'src/models/article-models';
 import { APIServiceService } from '../service/apiservice.service';
+import { AuthServiceService } from '../service/auth-service.service';
 
 @Component({
   selector: 'app-folder',
@@ -15,9 +16,9 @@ export class FolderPage implements OnInit {
   public folder: string;
   public articles:Article[] = []
 
-  constructor(private iab: InAppBrowser,private activatedRoute: ActivatedRoute, public apiService:APIServiceService,public navCtrl: NavController) { }
+  constructor(private iab: InAppBrowser,private activatedRoute: ActivatedRoute, public apiService:APIServiceService,public navCtrl: NavController,private authService: AuthServiceService,) { }
 
-
+  uid:string
   options : InAppBrowserOptions = {
     location : 'yes',//Or 'no' 
     hidden : 'no', //Or  'yes'
@@ -35,6 +36,18 @@ export class FolderPage implements OnInit {
     presentationstyle : 'pagesheet',//iOS only 
     fullscreen : 'yes',//Windows only    
   };
+
+  async ionViewWillEnter(){
+    this.uid = await this.getLoginStatus()
+    if(this.uid === null)
+    {
+      this.navCtrl.navigateForward('login')
+    }
+  }
+
+  async getLoginStatus(){
+    return await this.authService.getLoginStatus();
+  }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');

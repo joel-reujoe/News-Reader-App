@@ -92,14 +92,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FolderPage": () => (/* binding */ FolderPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
 /* harmony import */ var _raw_loader_folder_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./folder.page.html */ 7154);
 /* harmony import */ var _folder_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder.page.scss */ 7065);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 9895);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 9895);
 /* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ 3760);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 476);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 476);
 /* harmony import */ var _service_apiservice_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/apiservice.service */ 4165);
+/* harmony import */ var _service_auth_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/auth-service.service */ 6115);
+
 
 
 
@@ -109,11 +111,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let FolderPage = class FolderPage {
-    constructor(iab, activatedRoute, apiService, navCtrl) {
+    constructor(iab, activatedRoute, apiService, navCtrl, authService) {
         this.iab = iab;
         this.activatedRoute = activatedRoute;
         this.apiService = apiService;
         this.navCtrl = navCtrl;
+        this.authService = authService;
         this.articles = [];
         this.options = {
             location: 'yes',
@@ -133,6 +136,19 @@ let FolderPage = class FolderPage {
             fullscreen: 'yes', //Windows only    
         };
     }
+    ionViewWillEnter() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.uid = yield this.getLoginStatus();
+            if (this.uid === null) {
+                this.navCtrl.navigateForward('login');
+            }
+        });
+    }
+    getLoginStatus() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            return yield this.authService.getLoginStatus();
+        });
+    }
     ngOnInit() {
         this.folder = this.activatedRoute.snapshot.paramMap.get('id');
         console.log(this.folder);
@@ -149,12 +165,13 @@ let FolderPage = class FolderPage {
 };
 FolderPage.ctorParameters = () => [
     { type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_2__.InAppBrowser },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.ActivatedRoute },
     { type: _service_apiservice_service__WEBPACK_IMPORTED_MODULE_3__.APIServiceService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController },
+    { type: _service_auth_service_service__WEBPACK_IMPORTED_MODULE_4__.AuthServiceService }
 ];
-FolderPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+FolderPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
         selector: 'app-folder',
         template: _raw_loader_folder_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_folder_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]

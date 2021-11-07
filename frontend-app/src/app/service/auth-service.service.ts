@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
 import { Storage } from '@capacitor/storage';
+import { NavController } from '@ionic/angular';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class AuthServiceService {
 
   constructor(
     private http: HttpClient,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private navCtrl:NavController
   ) { }
 
 
@@ -39,6 +41,7 @@ export class AuthServiceService {
         .then(
           () => {
             console.log('Token Stored');
+            this.navCtrl.navigateForward('folder/general')
           },
           error => console.error('Error storing item', error)
         );

@@ -20,10 +20,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
 import { Storage } from '@capacitor/storage';
+import { NavController } from '@ionic/angular';
 let AuthServiceService = class AuthServiceService {
-    constructor(http, alertService) {
+    constructor(http, alertService, navCtrl) {
         this.http = http;
         this.alertService = alertService;
+        this.navCtrl = navCtrl;
         this.API_URL = 'http://localhost:8000';
     }
     getLoginStatus() {
@@ -43,6 +45,7 @@ let AuthServiceService = class AuthServiceService {
                 })
                     .then(() => {
                     console.log('Token Stored');
+                    this.navCtrl.navigateForward('folder/general');
                 }, error => console.error('Error storing item', error));
             }
             else {
@@ -62,7 +65,8 @@ AuthServiceService = __decorate([
         providedIn: 'root'
     }),
     __metadata("design:paramtypes", [HttpClient,
-        AlertService])
+        AlertService,
+        NavController])
 ], AuthServiceService);
 export { AuthServiceService };
 //# sourceMappingURL=auth-service.service.js.map

@@ -7,17 +7,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { NavController } from '@ionic/angular';
 import { APIServiceService } from '../service/apiservice.service';
+import { AuthServiceService } from '../service/auth-service.service';
 let FolderPage = class FolderPage {
-    constructor(iab, activatedRoute, apiService, navCtrl) {
+    constructor(iab, activatedRoute, apiService, navCtrl, authService) {
         this.iab = iab;
         this.activatedRoute = activatedRoute;
         this.apiService = apiService;
         this.navCtrl = navCtrl;
+        this.authService = authService;
         this.articles = [];
         this.options = {
             location: 'yes',
@@ -36,6 +47,19 @@ let FolderPage = class FolderPage {
             presentationstyle: 'pagesheet',
             fullscreen: 'yes',
         };
+    }
+    ionViewWillEnter() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.uid = yield this.getLoginStatus();
+            if (this.uid === null) {
+                this.navCtrl.navigateForward('login');
+            }
+        });
+    }
+    getLoginStatus() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.authService.getLoginStatus();
+        });
     }
     ngOnInit() {
         this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -57,7 +81,7 @@ FolderPage = __decorate([
         templateUrl: './folder.page.html',
         styleUrls: ['./folder.page.scss'],
     }),
-    __metadata("design:paramtypes", [InAppBrowser, ActivatedRoute, APIServiceService, NavController])
+    __metadata("design:paramtypes", [InAppBrowser, ActivatedRoute, APIServiceService, NavController, AuthServiceService])
 ], FolderPage);
 export { FolderPage };
 //# sourceMappingURL=folder.page.js.map

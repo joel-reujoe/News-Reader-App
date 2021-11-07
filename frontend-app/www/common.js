@@ -438,6 +438,219 @@ const openURL = async (url, ev, direction, animation) => {
 
 
 
+/***/ }),
+
+/***/ 6825:
+/*!*************************************!*\
+  !*** ./src/app/login/login.page.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LoginPage": () => (/* binding */ LoginPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 6770);
+/* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 1339);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 476);
+/* harmony import */ var _register_register_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../register/register.page */ 8135);
+/* harmony import */ var _service_auth_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/auth-service.service */ 6115);
+
+
+
+
+
+
+
+
+let LoginPage = class LoginPage {
+    constructor(authService, navCtrl, modalController) {
+        this.authService = authService;
+        this.navCtrl = navCtrl;
+        this.modalController = modalController;
+        this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormGroup({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl(),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl()
+        });
+    }
+    ionViewWillEnter() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.uid = yield this.getLoginStatus();
+            if (this.uid !== null) {
+                this.navCtrl.navigateForward('folder/general');
+            }
+        });
+    }
+    getLoginStatus() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            return yield this.authService.getLoginStatus();
+        });
+    }
+    login(value) {
+        this.authService.login(value.email, value.password);
+    }
+    registerModal() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.dismissLogin();
+            const registerModal = yield this.modalController.create({
+                component: _register_register_page__WEBPACK_IMPORTED_MODULE_2__.RegisterPage
+            });
+            return yield registerModal.present();
+        });
+    }
+    dismissLogin() {
+        this.modalController.dismiss();
+    }
+};
+LoginPage.ctorParameters = () => [
+    { type: _service_auth_service_service__WEBPACK_IMPORTED_MODULE_3__.AuthServiceService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController }
+];
+LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+        selector: 'app-login',
+        template: _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_login_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], LoginPage);
+
+
+
+/***/ }),
+
+/***/ 8135:
+/*!*******************************************!*\
+  !*** ./src/app/register/register.page.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RegisterPage": () => (/* binding */ RegisterPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var _raw_loader_register_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./register.page.html */ 9200);
+/* harmony import */ var _register_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register.page.scss */ 9728);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 476);
+/* harmony import */ var _login_login_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login/login.page */ 6825);
+/* harmony import */ var _service_auth_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/auth-service.service */ 6115);
+
+
+
+
+
+
+
+
+let RegisterPage = class RegisterPage {
+    constructor(modalController, authService) {
+        this.modalController = modalController;
+        this.authService = authService;
+        this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormGroup({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl(),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl()
+        });
+    }
+    ngOnInit() {
+    }
+    register(value) {
+        this.authService.register(value.email, value.password);
+    }
+    dismissRegister() {
+        this.modalController.dismiss();
+    }
+    loginModal() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.dismissRegister();
+            const loginModal = yield this.modalController.create({
+                component: _login_login_page__WEBPACK_IMPORTED_MODULE_2__.LoginPage,
+            });
+            return yield loginModal.present();
+        });
+    }
+};
+RegisterPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController },
+    { type: _service_auth_service_service__WEBPACK_IMPORTED_MODULE_3__.AuthServiceService }
+];
+RegisterPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+        selector: 'app-register',
+        template: _raw_loader_register_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_register_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], RegisterPage);
+
+
+
+/***/ }),
+
+/***/ 1339:
+/*!***************************************!*\
+  !*** ./src/app/login/login.page.scss ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ 9728:
+/*!*********************************************!*\
+  !*** ./src/app/register/register.page.scss ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJyZWdpc3Rlci5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ 6770:
+/*!*****************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.page.html ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img alt=\"logo\" height=\"40\"  src=\"assets/logo-1.png\" > \n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form [formGroup]=\"formGroup\" (ngSubmit)=\"login(formGroup.value)\" method=\"post\">\n    <ion-item>\n      <ion-label position=\"floating\" required>Email</ion-label>\n      <ion-input ngModel formControlName=\"email\"  type=\"email\" name=\"email\"></ion-input>\n      <div class=\"alert\" *ngIf=\"!formGroup.controls['email'].valid && formGroup.controls['email'].touched\" >{{ contentAlert }}</div>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label position=\"floating\" required>Password</ion-label>\n      <ion-input formControlName=\"password\" ngModel type=\"password\" name=\"password\"></ion-input>\n      <div class=\"alert\" *ngIf=\"!formGroup.controls['password'].valid && formGroup.controls['password'].touched\" >{{ contentAlert }}</div>\n    </ion-item>\n    <ion-button type=\"submit\" expand=\"full\" color=\"primary\" [disabled]=\"!formGroup.valid\">Login</ion-button>\n    <p text-center>Don't have a account?</p>\n    <ion-button expand=\"full\" color=\"danger\" (click)=\"registerModal()\">Register</ion-button>\n  </form>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ 9200:
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img alt=\"logo\" height=\"40\"  src=\"assets/logo-1.png\" > \n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"formGroup\" (ngSubmit)=\"register(formGroup.value)\" method=\"post\">\n    <ion-item>\n      <ion-label position=\"floating\" required>Email</ion-label>\n      <ion-input ngModel formControlName=\"email\"  type=\"email\" name=\"email\"></ion-input>\n      <div class=\"alert\" *ngIf=\"!formGroup.controls['email'].valid && formGroup.controls['email'].touched\" >{{ contentAlert }}</div>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label position=\"floating\" required>Password</ion-label>\n      <ion-input formControlName=\"password\" ngModel type=\"password\" name=\"password\"></ion-input>\n      <div class=\"alert\" *ngIf=\"!formGroup.controls['password'].valid && formGroup.controls['password'].touched\" >{{ contentAlert }}</div>\n    </ion-item>\n    <ion-button type=\"submit\" expand=\"full\" color=\"primary\" [disabled]=\"!formGroup.valid\">Register</ion-button>\n    <p text-center>Have an account?</p>\n    <ion-button expand=\"full\" color=\"danger\" (click)=\"loginModal()\">Login</ion-button>\n  </form>\n</ion-content>\n");
+
 /***/ })
 
 }]);
