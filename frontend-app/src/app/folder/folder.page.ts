@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { NavController } from '@ionic/angular';
+import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
 import { Article } from 'src/models/article-models';
 import { APIServiceService } from '../service/apiservice.service';
 import { AuthServiceService } from '../service/auth-service.service';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-folder',
@@ -16,7 +18,12 @@ export class FolderPage implements OnInit {
   public folder: string;
   public articles:Article[] = []
 
-  constructor(private iab: InAppBrowser,private activatedRoute: ActivatedRoute, public apiService:APIServiceService,public navCtrl: NavController,private authService: AuthServiceService,) { }
+  constructor(private iab: InAppBrowser,private activatedRoute: ActivatedRoute, public apiService:APIServiceService,public navCtrl: NavController,private authService: AuthServiceService,private backButton:Platform,private routerOutlet: IonRouterOutlet) { 
+    this.backButton.backButton.subscribeWithPriority(-1,()=>{
+       App.exitApp();
+    })
+
+  }
 
   uid:string
   options : InAppBrowserOptions = {
@@ -67,7 +74,7 @@ export class FolderPage implements OnInit {
 
   redirectTo(url)
   {
-    let target = "_blank";
+    let target ="_self";
     this.iab.create(url,target,this.options);
   }
 

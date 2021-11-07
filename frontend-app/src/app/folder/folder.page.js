@@ -19,16 +19,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { NavController } from '@ionic/angular';
+import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
 import { APIServiceService } from '../service/apiservice.service';
 import { AuthServiceService } from '../service/auth-service.service';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 let FolderPage = class FolderPage {
-    constructor(iab, activatedRoute, apiService, navCtrl, authService) {
+    constructor(iab, activatedRoute, apiService, navCtrl, authService, backButton, routerOutlet) {
         this.iab = iab;
         this.activatedRoute = activatedRoute;
         this.apiService = apiService;
         this.navCtrl = navCtrl;
         this.authService = authService;
+        this.backButton = backButton;
+        this.routerOutlet = routerOutlet;
         this.articles = [];
         this.options = {
             location: 'yes',
@@ -47,6 +51,9 @@ let FolderPage = class FolderPage {
             presentationstyle: 'pagesheet',
             fullscreen: 'yes',
         };
+        this.backButton.backButton.subscribeWithPriority(-1, () => {
+            App.exitApp();
+        });
     }
     ionViewWillEnter() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -71,7 +78,7 @@ let FolderPage = class FolderPage {
         });
     }
     redirectTo(url) {
-        let target = "_blank";
+        let target = "_self";
         this.iab.create(url, target, this.options);
     }
 };
@@ -81,7 +88,7 @@ FolderPage = __decorate([
         templateUrl: './folder.page.html',
         styleUrls: ['./folder.page.scss'],
     }),
-    __metadata("design:paramtypes", [InAppBrowser, ActivatedRoute, APIServiceService, NavController, AuthServiceService])
+    __metadata("design:paramtypes", [InAppBrowser, ActivatedRoute, APIServiceService, NavController, AuthServiceService, Platform, IonRouterOutlet])
 ], FolderPage);
 export { FolderPage };
 //# sourceMappingURL=folder.page.js.map

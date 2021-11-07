@@ -20,7 +20,8 @@ AppModule = __decorate([
     NgModule({
         declarations: [AppComponent],
         entryComponents: [],
-        imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+        imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule
+        ],
         providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, InAppBrowser, NativeStorage],
         bootstrap: [AppComponent],
     })
