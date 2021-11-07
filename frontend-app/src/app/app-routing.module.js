@@ -9,7 +9,7 @@ import { PreloadAllModules, RouterModule } from '@angular/router';
 const routes = [
     {
         path: '',
-        redirectTo: 'folder/general',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
