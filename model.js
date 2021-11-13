@@ -9,28 +9,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var NEWSAPI = require('newsapi');
 var firebase = require('firebase');
+const NodeCache = require("node-cache");
+const myCache = new NodeCache();
 var config = {
     apiKey: "AIzaSyCkZ0zRdKzYP9PPL36mEoUsr7YPARyQ1vg",
     databaseURL: "https://nodetest-95f46.firebaseio.com",
 };
 firebase.initializeApp(config);
-var newsapi = new NEWSAPI('620a0602eb5a4a05be03c5d6d4a25e10');
+var newsapi = new NEWSAPI('c45ec06b69884c25b6805e86addf1063');
 class Model {
     constructor() {
         this.newsGenerator = (category) => __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                try {
-                    newsapi.v2.topHeadlines({
-                        q: '',
-                        category: category,
-                        language: 'en',
-                        country: 'us'
-                    }).then((response) => __awaiter(this, void 0, void 0, function* () {
-                        resolve(response);
-                    }));
+                let value = myCache.get(`news_list_${category}`);
+                if (value == undefined) {
+                    try {
+                        newsapi.v2.topHeadlines({
+                            q: '',
+                            category: category,
+                            language: 'en',
+                            country: 'us'
+                        }).then((response) => __awaiter(this, void 0, void 0, function* () {
+                            myCache.set(`news_list_${category}`, response);
+                            resolve(response);
+                        }));
+                    }
+                    catch (e) {
+                        reject(e);
+                    }
                 }
-                catch (e) {
-                    reject(e);
+                else {
+                    resolve(value);
                 }
             }));
         });
