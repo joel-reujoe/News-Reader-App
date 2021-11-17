@@ -9,4 +9,6 @@ COPY . .
 
 EXPOSE 8000
 
-CMD [ "node", "controller.js" ]
+
+
+CMD [ "cd","./frontend-app", "ionic","build","node", "controller.js" ]
