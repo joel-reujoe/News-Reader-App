@@ -9,7 +9,7 @@
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)" method="post">
     <ion-item>
-      <ion-label position="floating" required>Email</ion-label>
+      <ion-label position="floating" required>Email1</ion-label>
       <ion-input ngModel formControlName="email"  type="email" name="email"></ion-input>
       <div class="alert" *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched" >{{ contentAlert }}</div>
     </ion-item>
