@@ -7,7 +7,7 @@ steps:
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '--image', 
+    args: ['push', 
            'us-central1-docker.pkg.dev/million-request-handler/joelreuben/news-reader-app']
 
   # Entrypoint, timeout and environment variables
